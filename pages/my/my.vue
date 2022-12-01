@@ -1,5 +1,5 @@
 <template>
-	<view class="my">
+	<view class="my animate__animated animate__fadeInDown">
 		<view class="userInfo">
 			<!-- 个人信息 -->
 			<iInfo></iInfo>
@@ -31,7 +31,7 @@
 			};
 		},
 		created() {
-			uni.setStorageSync("token",123)
+			// uni.setStorageSync("token",123)
 		}
 	}
 </script>
@@ -40,6 +40,9 @@
 page,.my{
 	height: 100%;
 	background-color: #fff;
+	 --animate-duration: .5s;
+	  --animate-delay: .5s;
+	  --animate-repeat: .5;
 }
 .userInfo{
 	height: 320rpx;

@@ -20,4 +20,5 @@
 	@import url("@/common/animate.min.css");
 	/* 引入icon */
 	@import url("~@/common/iconfont.css");
+	@import url("~@/common/fonts/iconfont.css");
 </style>

@@ -4,6 +4,8 @@ import App from './App'
 import Vue from 'vue'
 Vue.config.productionTip = false
 App.mpType = 'app'
+import mixin from "@/common/mixins/mixins.js"
+Vue.mixin(mixin)
 import store from "@/store/index.js"
 const app = new Vue({
 	store,

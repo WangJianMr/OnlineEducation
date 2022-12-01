@@ -1,5 +1,5 @@
 <template>
-	<view class="info">
+	<view class="info" @click="myAuth">
 		<view class="fdc">
 			<view class="left">
 				<image v-if="!getToken" src="../../../static/demo/banner/banner1.png" mode=""></image>
@@ -22,7 +22,9 @@
 <script>
 	import {mapState,mapGetters} from "vuex"
 	import userInfoList from "@/config/my-info-list.js"
+	import pagesMinis from "@/common/mixins/mixins.js"
 	export default {
+		mixins:["pagesMinis"],
 		name:"Info",
 		props:{
 			infoList:{
@@ -33,6 +35,16 @@
 		computed:{
 			...mapGetters(['getToken'])
 		},
+		methods:{
+			myAuth(){
+				console.log(this.getToken);
+				if(this.getToken){
+					console.log('已登录');
+				}else{
+					this.navTo("/pages/my/register")
+				}
+			},
+		}
 	}
 </script>
 
