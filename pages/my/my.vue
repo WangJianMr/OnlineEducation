@@ -29,6 +29,9 @@
 			return {
 				
 			};
+		},
+		created() {
+			uni.setStorageSync("token",123)
 		}
 	}
 </script>
