@@ -18,4 +18,7 @@
 	@import url("@/common/free.css");
 	/* 引入icon */
 	@import url("~@/common/iconfont.css");
+	
+	/* 引入动画库 */
+	@import url("@/common/animate.min.css");
 </style>
