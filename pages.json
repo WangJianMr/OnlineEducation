@@ -1,12 +1,54 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
+	    {
+            "path" : "pages/home/home",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "首页",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/study/study",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "学习",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my/my",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"tabBar": {
+		"color": "#c3c2ca",
+		"selectedColor": "#2c2c2c",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/home/home",
+			"iconPath": "static/tabbar/index1.png",
+			"selectedIconPath": "static/tabbar/index1_selected.png",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/study/study",
+			"iconPath": "static/tabbar/learn.png",
+			"selectedIconPath": "static/tabbar/learn_selected.png",
+			"text": "学习"
+		},{
+			"pagePath": "pages/my/my",
+			"iconPath": "static/tabbar/home.png",
+			"selectedIconPath": "static/tabbar/home_selected.png",
+			"text": "我的"
+		}]
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
