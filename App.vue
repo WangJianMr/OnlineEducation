@@ -13,5 +13,9 @@
 </script>
 
 <style>
-	/*每个页面公共css */
+	/* 全局样式文件 */
+	@import url("@/common/common.css");
+	@import url("@/common/free.css");
+	/* 引入icon */
+	@import url("~@/common/iconfont.css");
 </style>

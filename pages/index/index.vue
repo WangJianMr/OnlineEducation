@@ -1,8 +1,7 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
+		<view class="text-area mt-1">
+			<text class="iconfont icon-saoyisao"></text>
 		</view>
 	</view>
 </template>
