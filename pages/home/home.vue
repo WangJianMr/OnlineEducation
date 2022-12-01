@@ -10,10 +10,19 @@
 			return {
 				
 			};
+		},
+		 onLoad() {
+		},
+		methods:{
+			
 		}
 	}
 </script>
 
 <style lang="scss">
-
+.aa{
+	width: 300rpx;
+	height: 300rpx;
+	background-color: aqua;
+}
 </style>

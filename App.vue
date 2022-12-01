@@ -14,8 +14,8 @@
 
 <style>
 	/* 全局样式文件 */
-	@import url("@/common/common.css");
 	@import url("@/common/free.css");
+	@import url("@/common/common.css");
 	/* 引入动画库 */
 	@import url("@/common/animate.min.css");
 	/* 引入icon */

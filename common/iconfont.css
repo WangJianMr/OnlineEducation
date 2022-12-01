@@ -11,6 +11,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.icon-elipsis:before {
+  content: "\e66e";
+}
 
 .icon-info:before {
   content: "\e633";
