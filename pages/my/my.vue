@@ -2,7 +2,7 @@
 	<view class="my animate__animated animate__fadeInDown">
 		<view class="userInfo">
 			<!-- 个人信息 -->
-			<iInfo :getToken="getToken"></iInfo>
+			<iInfo :getToken="getToken" :infoList="infoList"></iInfo>
 			<!-- nav -->
 			<navBar></navBar>
 			
@@ -19,6 +19,7 @@
 	import navBar from "./components/navBar.vue"
 	//选项菜单组件
 	import optionTab from "./components/optionTab.vue"
+	import {mapGetters} from "vuex"
 	export default {
 		components:{
 			iInfo,
@@ -28,13 +29,16 @@
 		data() {
 			return {
 				getToken:false,
+				infoList:{},
 			};
 		},
 		computed:{
+			...mapGetters(['getTokens'])
 		},
 		onShow() {
+			
+			this.infoList = uni.getStorageSync('info') || {}
 			this.getToken = !!uni.getStorageSync('token')
-			console.log(this.getToken);
 		}
 	}
 </script>

@@ -117,6 +117,7 @@
 							uni.switchTab({
 								url: '/pages/my/my'
 							});
+							this.$store.commit('init')
 						}
 						
 					}

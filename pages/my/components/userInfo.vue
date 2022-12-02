@@ -3,14 +3,14 @@
 		<view class="fdc">
 			<view class="left">
 				<image v-if="!getToken" src="../../../static/demo/banner/banner1.png" mode=""></image>
-				<image v-if="getToken && infoList.imageUrl" src="../../../static/demo/banner/banner2.png" mode=""></image>
+				<image v-if="getToken" src="../../../static/demo/banner/banner2.png" mode=""></image>
 			</view>
 			<view class="right">
 				<view class="rightName">
-					<text class="top">{{getToken?infoList.name:'立即登录'}}</text>
+					<text class="top">{{getToken?infoList.username:'立即登录'}}</text>
 					<text class="vip" v-if="infoList.vip && getToken">{{infoList.vip}}</text>
 				</view>
-				<text class="bottom">{{getToken?infoList.descriptor:'登录解锁更多功能'}}</text>
+				<text class="bottom">{{getToken?infoList.desc|| '暂无描述':'登录解锁更多功能'}}</text>
 			</view>
 		</view>
 		<view class="setting" v-if="getToken">
@@ -18,7 +18,6 @@
 		</view>
 	</view>
 </template>
-
 <script>
 	import userInfoList from "@/config/my-info-list.js"
 	import pagesMinis from "@/common/mixins/mixins.js"
@@ -35,7 +34,6 @@
 				default:false
 			}
 		},
-
 		methods:{
 			myAuth(){
 				if(this.getToken){

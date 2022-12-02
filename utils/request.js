@@ -5,7 +5,6 @@ class Http{
 	static baseUrl = '/api'
 	static token = store.state.token
 	static request(options={}){
-		console.log(options);
 		return new Promise((resolve,reject)=>{
 			uni.request({
 			    url: Http.baseUrl + options.url, 
@@ -17,7 +16,6 @@ class Http{
 			    },
 				method:options.method || "GET",
 			    success: (res) => {
-			        console.log(res);
 			        resolve(res)
 			    },
 				fail:(err)=>{

@@ -8,17 +8,8 @@
                 "enablePullDownRefresh": false
             }
             
-        }
-        ,{
-            "path" : "pages/study/study",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "学习",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
+        },
+        {
             "path" : "pages/my/my",
             "style" :                                                                                    
             {
@@ -62,6 +53,60 @@
             }
             
         }
+        ,{
+            "path" : "pages/order-list/order-list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/msg-list/msg-list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "消息列表",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabbar/learn/learn",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "学习",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/my-coupon/my-coupon",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的优惠劵",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/setting/setting",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的设置",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/fava-list/fava-list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "收藏",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#c3c2ca",
@@ -73,7 +118,7 @@
 			"selectedIconPath": "static/tabbar/index1_selected.png",
 			"text": "首页"
 		}, {
-			"pagePath": "pages/study/study",
+			"pagePath": "pages/tabbar/learn/learn",
 			"iconPath": "static/tabbar/learn.png",
 			"selectedIconPath": "static/tabbar/learn_selected.png",
 			"text": "学习"

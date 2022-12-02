@@ -12,12 +12,13 @@ const store = new Vuex.Store({
 		userInfoObj:{},
 	},
 	getters:{
-		getToken(state){
-			console.log(state.token);
+		getTokens(state){
 			return !!state.token
 		},
 	},
 	mutations:{
+		init(){
+		},
 		registerOk(state,obj){
 			state.userInfoObj = obj
 			if(obj){

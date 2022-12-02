@@ -1,7 +1,7 @@
 <template>
 	<view class="option">
 		<view class="optionsListItem" v-for="(item,index) in optionList" :key="index">
-			<view class="ele" v-for="(ele,i) in item" :key="i">
+			<view class="ele" v-for="(ele,i) in item" :key="i" @click="optionAuthTo(ele)" hover-class="active">
 				<view class="left">
 					<text class="icon" :class="ele.icon"></text>
 					<text class="text">{{ele.title}}</text>
@@ -24,13 +24,22 @@
 				default:()=>myOptionList()
 			}
 		},
-		created() {
-			console.log(this.optionList);
+		methods:{
+			optionAuthTo(ele){
+					if(ele.login || this.$store.getters.getTokens){
+						this.navTo(ele.page)
+					}else{
+						this.navTo('/pages/my/register')
+					}
+			},
 		}
 	}
 </script>
 
 <style lang="scss">
+	.active{
+		background-color: #ccc;
+	}
 	.option{
 		margin-top: 80rpx;
 		padding: 0 56rpx;

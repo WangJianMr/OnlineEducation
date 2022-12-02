@@ -1,6 +1,6 @@
 <template>
 	<view class="navBar">
-		<view class="navItem" v-for="(item,index) in navList" :key="index">
+		<view class="navItem" v-for="(item,index) in navList" :key="index" @click="navAuthTo(item)">
 			<text :class="item.icon" class="icon"></text>
 			<text class="title mt-1">{{item.title}}</text>
 		</view>
@@ -17,8 +17,21 @@
 				default: () => myNavList()
 			}
 		},
-		created() {
-			console.log(this.navList);
+
+		methods:{
+			navAuthTo(item){
+				if(item.login || this.$store.getters.getTokens){
+					this.navTo(item.page)
+					if(item.bar){
+						uni.switchTab({
+							url: item.page
+						});
+					}
+					
+				}else{
+					this.navTo('/pages/my/register')
+				}
+			}
 		}
 
 	}
