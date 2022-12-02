@@ -1,8 +1,9 @@
 
-
+import store from "@/store/index.js"
 class Http{
 	static appid ='bd9d01ecc75dbbaaefce'
 	static baseUrl = '/api'
+	static token = store.state.token
 	static request(options={}){
 		console.log(options);
 		return new Promise((resolve,reject)=>{
@@ -11,8 +12,10 @@ class Http{
 			    data:options.data || {},
 			    header: {
 					appid:Http.appid,
+					token:Http.token,
 			        ...options.header
 			    },
+				method:options.method || "GET",
 			    success: (res) => {
 			        console.log(res);
 			        resolve(res)

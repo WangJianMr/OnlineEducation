@@ -1,8 +1,11 @@
 <template>
 	<view class="myInut">
-		<view class="inputItem">
-			<text class="icon" :class="icon"></text>
-			<input class="inout" :type="type" :placeholder="placeholder" v-model="value">
+		<view class="inputItem" v-if="!item.show" v-for="(item,index) in formList" :key="index">
+			<text class="icon" :class="item.icon"></text>
+			<view class="inp_btn">
+				<input class="inout" :type="item.type" :placeholder="item.placeholder" v-model.sync="value[item.prop]">
+				<button @click="getCode" class="btns" v-if="item.prop==='code'">{{btnText}}</button>
+			</view>
 		</view>
 		
 	</view>
@@ -12,23 +15,25 @@
 	export default{
 		name:"myinput",
 		props:{
+			
 			value:{
-				type:[String,Number],
-				default:""
+				type:Object,
+				default:()=>{}
 			},
-			icon:{
-				type:String,
-				default:""
+			formList:{
+				type:Array,
+				default:()=>[]
 			},
-			type:{
+			btnText:{
 				type:String,
-				default:""
-			},
-			placeholder:{
-				type:String,
-				default:""
+				default:'发送'
 			}
 		},
+		methods:{
+			getCode(){
+				this.$emit('getCode')
+			},
+		}
 		
 	}
 </script>
@@ -43,6 +48,20 @@
 			display: flex;
 			align-items: center;
 			border-radius: 8rpx;
+			.inp_btn{
+				display: flex;
+				height: 100%;
+				.btns{
+					background-color: #5ccc84;
+					color: #fff;
+					border-radius: 0 10rpx 10rpx 0;
+					width: 220rpx;
+					height:100%;
+					&::after{
+						border: 0;
+					}
+				}
+			}
 			.icon{
 				width: 95rpx;
 				text-align: center;

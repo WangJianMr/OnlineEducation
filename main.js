@@ -6,6 +6,8 @@ Vue.config.productionTip = false
 App.mpType = 'app'
 import mixin from "@/common/mixins/mixins.js"
 Vue.mixin(mixin)
+import * as util from "@/common/js/utils.js"
+Vue.prototype.$utils = util
 import store from "@/store/index.js"
 const app = new Vue({
 	store,

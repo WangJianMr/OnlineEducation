@@ -51,6 +51,17 @@
             }
             
         }
+        ,{
+            "path" : "pages/bind-phone/bind-phone",
+            "style" :                                                                                    
+            {
+               "enablePullDownRefresh": false,
+               "app-plus": {
+               	"titleNView":false
+               }
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#c3c2ca",

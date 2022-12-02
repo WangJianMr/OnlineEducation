@@ -20,7 +20,6 @@
 </template>
 
 <script>
-	import {mapState,mapGetters} from "vuex"
 	import userInfoList from "@/config/my-info-list.js"
 	import pagesMinis from "@/common/mixins/mixins.js"
 	export default {
@@ -30,14 +29,15 @@
 			infoList:{
 				type:Object,
 				default:()=>userInfoList()
+			},
+			getToken:{
+				type:Boolean,
+				default:false
 			}
 		},
-		computed:{
-			...mapGetters(['getToken'])
-		},
+
 		methods:{
 			myAuth(){
-				console.log(this.getToken);
 				if(this.getToken){
 					console.log('已登录');
 				}else{

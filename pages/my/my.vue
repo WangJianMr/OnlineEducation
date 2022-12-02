@@ -2,7 +2,7 @@
 	<view class="my animate__animated animate__fadeInDown">
 		<view class="userInfo">
 			<!-- 个人信息 -->
-			<iInfo></iInfo>
+			<iInfo :getToken="getToken"></iInfo>
 			<!-- nav -->
 			<navBar></navBar>
 			
@@ -27,11 +27,14 @@
 		},
 		data() {
 			return {
-				
+				getToken:false,
 			};
 		},
-		created() {
-			// uni.setStorageSync("token",123)
+		computed:{
+		},
+		onShow() {
+			this.getToken = !!uni.getStorageSync('token')
+			console.log(this.getToken);
 		}
 	}
 </script>
