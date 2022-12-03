@@ -4,7 +4,7 @@
 			<text class="icon" :class="item.icon"></text>
 			<view class="inp_btn">
 				<input class="inout" :type="item.type" :placeholder="item.placeholder" v-model.sync="value[item.prop]">
-				<button @click="getCode" class="btns" v-if="item.prop==='code'">{{btnText}}</button>
+				<button @click="getCode" class="btns" v-if="item.prop==='code'">{{btnTexts}}</button>
 			</view>
 		</view>
 		
@@ -24,7 +24,7 @@
 				type:Array,
 				default:()=>[]
 			},
-			btnText:{
+			btnTexts:{
 				type:String,
 				default:'发送'
 			}

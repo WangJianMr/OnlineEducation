@@ -15,7 +15,7 @@
 
 			<view class="dfJcsb">
 				<text class="goLogin" @click="loginFlagChange">{{loginFlag?'去注册':'去登录'}}</text>
-				<text class="forget">忘记密码?</text>
+				<text class="forget" @click="forgetPassword">忘记密码?</text>
 			</view>
 
 			<view class="footer">
@@ -166,6 +166,10 @@
 				} else {
 					this.checkFlag = false
 				}
+			},
+			//忘记密码
+			forgetPassword(){
+				this.navTo('/pages/forget/forget')
 			},
 		}
 	}

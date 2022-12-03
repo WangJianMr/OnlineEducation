@@ -35,5 +35,13 @@ export default{
 			data,
 			method:"post",
 		})
+	},
+	//找回密码
+	getFindPassword(data){
+		return Http.request({
+			url:'/forget',
+			data,
+			method:"post",
+		})
 	}
 }

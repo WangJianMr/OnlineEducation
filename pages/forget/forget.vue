@@ -1,23 +1,29 @@
 <template>
-	<view class="phone">
+	<view class="register">
 		<view class="back" @click="navBack()"></view>
-		<view class="phoneConent">
-			<h2>绑定手机号</h2>
 
-			<!-- //表单组件 -->
-			<myInput v-model.sync="form" :formList="formList" :btnTexts="btnText" @getCode="getCode"></myInput>
+		<!-- 注册表单 -->
+		<view class="regInput">
+			<h2>找回密码</h2>
+			<!-- 表单组件 -->
+			<myInput v-model="form" :formList="formList" @getCode="getCode"></myInput>
 
-			<!-- 绑定按钮 -->
+			<!-- 注册/登录按钮 -->
 			<view class="btn">
-				<button @click="binding">绑定</button>
+				<button @click="findPassword">立即找回</button>
 			</view>
 		</view>
+
+
 	</view>
 </template>
 
 <script>
-	import myInput from "../my/components/myInput.vue"
+	import myInput from "@/pages/my/components/myInput.vue"
 	import loginApi from "@/api/login.js"
+	import {
+		mapState
+	} from "vuex"
 	export default {
 		components: {
 			myInput,
@@ -25,9 +31,12 @@
 		data() {
 			return {
 				form: {
-					phone: '',
-					code: '',
+					password: "",
+					repassword: "",
+					phone:"",
+					code:"",
 				},
+				//表单信息数据
 				formList: [{
 						type: 'text',
 						prop: "phone",
@@ -41,12 +50,29 @@
 						placeholder: "验证码",
 						show: false,
 						prop: "code",
-
+				
+					},
+					{
+						type: 'password',
+						icon: "iconfont icon-mima",
+						placeholder: "请输入密码",
+						show: false,
+						prop: "password",
+					},
+					{
+						type: 'password',
+						icon: "iconfont icon-mima",
+						placeholder: "请输入确认密码",
+						show: false,
+						prop: "repassword",
 					}
 				],
 			};
 		},
-		methods: {
+		computed: {
+			...mapState(['phone'])
+		},
+		methods:{
 			//获取验证码api
 			async handelCode() {
 				try {
@@ -61,44 +87,41 @@
 				} catch (e) {
 				}
 			},
-			//绑定手机号api
-			async handelBindingPhone(){
+		    //获取验证码按钮
+		    getCode(){
+		    	if(this.timeFlag) return
+		    	this.handelCode()
+		    },
+			//找回密码api
+			async handelFindPassword(){
 				try{
-					const res = await loginApi.getBindingPhone(this.form)
+					const res = await loginApi.getFindPassword(this.form)
 					console.log(res);
 					if(res.statusCode!==200){
 						this.$utils.msg(res.data.data)
 					}else{
-						this.$utils.msg('已绑定成功')
+						this.$utils.msg('找回成功')
+						this.navBack()
 						uni.hideLoading()
-						uni.switchTab({
-							url: '/pages/my/my'
-						});
-						this.$store.commit('setPhone',this.form.phone)
 					}
 				}catch(e){
 					//TODO handle the exception
 				}
 			},
-			//获取验证码按钮
-			getCode(){
-				if(this.timeFlag) return
-				this.handelCode()
-			},
-			//绑定按钮
-			binding(){
+			//找回密码
+			findPassword(){
 				uni.showLoading({
-					title: ''
-				});
-				this.handelBindingPhone()
+					title:"提交中"
+				})
+				this.handelFindPassword()
 			},
-		}
+		},
 	}
 </script>
 
 <style lang="scss">
 	page,
-	.phone {
+	.register {
 		height: 100%;
 		background-image: linear-gradient(90deg, #3bfdaf, #70d6f2);
 		overflow: hidden;
@@ -112,7 +135,7 @@
 			margin: 30rpx 0 0 38rpx;
 		}
 
-		.phoneConent {
+		.regInput {
 			margin-top: 132rpx;
 			width: 100%;
 			height: 100%;
@@ -123,16 +146,20 @@
 			h2 {
 				font-weight: normal;
 			}
-		}
 
-		.btn>uni-button {
-			background-color: #5ccc84 !important;
-			color: #fff;
-			margin-top: 50rpx;
+			.btn>uni-button {
+				background-color: #5ccc84 !important;
+				color: #fff;
+				margin-top: 50rpx;
 
-			&::after {
-				border: 0;
+				&::after {
+					border: 0;
+				}
 			}
+
+
+
+
 		}
 	}
 </style>
