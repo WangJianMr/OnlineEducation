@@ -3,7 +3,7 @@
 		<view class="fdc">
 			<view class="left">
 				<image v-if="!getToken" src="../../../static/demo/banner/banner1.png" mode=""></image>
-				<image v-if="getToken" src="../../../static/demo/banner/banner2.png" mode=""></image>
+				<image v-if="getToken && infoList.avatar" :src="infoList.avatar" mode=""></image>
 			</view>
 			<view class="right">
 				<view class="rightName">
@@ -34,10 +34,13 @@
 				default:false
 			}
 		},
+		created() {
+			console.log(this.infoList);
+		},
 		methods:{
 			myAuth(){
 				if(this.getToken){
-					console.log('已登录');
+					this.navTo('/pages/user-info/user-info')
 				}else{
 					this.navTo("/pages/my/register")
 				}
@@ -61,6 +64,7 @@
 			width: 125rpx;
 			height: 125rpx;
 			border-radius: 50%;
+			background-color: #fff;
 			image{
 				width: 100%;
 				height: 100%;

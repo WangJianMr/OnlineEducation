@@ -5,6 +5,7 @@
 		<!-- 注册表单 -->
 		<view class="regInput">
 			<h2>{{loginFlag?'登录':'注册'}}</h2>
+			
 			<!-- 表单组件 -->
 			<myInput v-model="form" :formList="formList"></myInput>
 

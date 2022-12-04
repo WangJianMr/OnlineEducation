@@ -8,7 +8,7 @@
 			
 		</view>
 		<!-- 选项菜单组件 -->
-		<optionTab></optionTab>
+		<optionTab :optionList="optionList"></optionTab>
 	</view>
 </template>
 
@@ -20,6 +20,7 @@
 	//选项菜单组件
 	import optionTab from "./components/optionTab.vue"
 	import {mapGetters} from "vuex"
+	import myOptionList from "@/config/my-option-list.js"
 	export default {
 		components:{
 			iInfo,
@@ -30,13 +31,18 @@
 			return {
 				getToken:false,
 				infoList:{},
+				optionList:myOptionList()
 			};
 		},
 		computed:{
 			...mapGetters(['getTokens'])
 		},
+		onNavigationBarButtonTap(e){
+			if(e.index==0){
+				this.navTo('/pages/setting/setting')
+			}
+		},
 		onShow() {
-			
 			this.infoList = uni.getStorageSync('info') || {}
 			this.getToken = !!uni.getStorageSync('token')
 		}
