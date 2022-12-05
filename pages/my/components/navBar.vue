@@ -47,7 +47,7 @@
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		box-shadow: 2px 2px 5px #ddd;
+		box-shadow:  0 1px 6px #ddd;
 
 		.navItem {
 			display: flex;
