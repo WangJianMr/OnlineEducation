@@ -16,4 +16,20 @@ export default {
 			data,
 		})
 	},
+	//我的收藏
+	getUserCollect(data){
+		return Http.request({
+			url:'/user_fava',
+			method:"get",
+			data,
+		})
+	},
+	//我的优惠劵
+	getUserCoupon(data){
+		return Http.request({
+			url:'/user_coupon',
+			method:"get",
+			data,
+		})
+	},
 }

@@ -48,6 +48,10 @@
 					success:async (res) => {
 						if (res.confirm) {
 							const out = await this.$store.dispatch('loginOut')
+							console.log(out);
+							if(out){
+								this.$utils.msg('退出成功')
+							}
 						} else if (res.cancel) {
 							console.log('用户点击取消');
 						}

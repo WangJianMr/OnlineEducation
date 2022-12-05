@@ -86,8 +86,9 @@
             "path" : "pages/my-coupon/my-coupon",
             "style" :                                                                                    
             {
+				"navigationBarBackgroundColor":"#fff",
                 "navigationBarTitleText": "我的优惠劵",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -105,8 +106,9 @@
             "path" : "pages/fava-list/fava-list",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "收藏",
-                "enablePullDownRefresh": false
+				"navigationBarBackgroundColor":"#fff",
+                "navigationBarTitleText": "收藏列表",
+                "enablePullDownRefresh": true
             }
             
         }

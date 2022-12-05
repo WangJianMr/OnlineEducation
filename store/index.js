@@ -64,9 +64,9 @@ const store = new Vuex.Store({
 					msg(res.data.data)
 					return false
 				}else{
-					msg('退出成功')
 					uni.clearStorageSync()
 					loginApi.getCoupon()
+					commit('init')
 					return true
 				}
 			}catch(e){
