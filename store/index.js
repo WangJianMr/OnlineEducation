@@ -21,6 +21,7 @@ const store = new Vuex.Store({
 	mutations:{
 		init(state){
 			state.token = uni.getStorageSync(TOKEN) || ""
+			state.info = uni.getStorageSync(INFO) || {}
 		},
 		registerOk(state,obj){
 			state.userInfoObj = obj
@@ -63,7 +64,7 @@ const store = new Vuex.Store({
 					msg(res.data.data)
 					return false
 				}else{
-					msg('ÍË³ö³É¹¦')
+					msg('é€€å‡ºæˆåŠŸ')
 					uni.clearStorageSync()
 					loginApi.getCoupon()
 					return true

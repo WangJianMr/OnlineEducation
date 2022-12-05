@@ -37,7 +37,7 @@
 							title: '昵称',
 							prop: "nickname",
 							type: "input",
-							value: this.$store.state.info.nickname
+							value: this.$store.state.info.nickname || '请填写'
 						},
 						{
 							title: '性别',
@@ -55,7 +55,7 @@
 			};
 		},
 		created() {
-
+			console.log(this.$store.state.info);
 		},
 		methods: {
 			//提交

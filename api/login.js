@@ -66,4 +66,14 @@ export default{
 			data,
 		})
 	},
+	
+	//修改密码
+	getAmendPassword(data){
+		return Http.request({
+			url:'/update_password',
+			method:"post",
+			data,
+		})
+	},
+	
 }

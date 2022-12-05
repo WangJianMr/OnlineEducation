@@ -5,7 +5,7 @@
 			<h2>绑定手机号</h2>
 
 			<!-- //表单组件 -->
-			<myInput v-model.sync="form" :formList="formList" :btnTexts="btnText" @getCode="getCode"></myInput>
+			<myInput v-model.sync="form" :formList="formList" :btnTexts="btnTextss" @getCode="getCode"></myInput>
 
 			<!-- 绑定按钮 -->
 			<view class="btn">

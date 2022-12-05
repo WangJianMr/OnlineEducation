@@ -3,7 +3,7 @@ const pageMixins={
 	data(){
 		return{
 			time:null,
-			btnText:'发送',
+			btnTextss:'发送',
 			timeFlag:false,
 		}
 	},
@@ -28,10 +28,10 @@ const pageMixins={
 			let num = 60
 			this.time = setInterval(()=>{
 				num--
-				this.btnText = num + 's'
+				this.btnTextss = num + 's'
 				if(num<=0){
 					this.timeFlag = false
-					this.btnText = '发送'
+					this.btnTextss = '发送'
 					clearInterval(this.time)
 					this.time=null
 				}

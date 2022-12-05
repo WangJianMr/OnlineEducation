@@ -7,7 +7,7 @@
 			</view>
 			<view class="right">
 				<view class="rightName">
-					<text class="top">{{getToken?infoList.username:'立即登录'}}</text>
+					<text class="top">{{getToken?infoList.nickname || infoList.username:'立即登录'}}</text>
 					<text class="vip" v-if="infoList.vip && getToken">{{infoList.vip}}</text>
 				</view>
 				<text class="bottom">{{getToken?infoList.desc|| '暂无描述':'登录解锁更多功能'}}</text>

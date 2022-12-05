@@ -12,7 +12,7 @@
 						<image v-if="ele.avatar" :src="avater || ele.avatar" mode=""></image>
 					</view>
 					<view class="input">
-						<input v-if="ele.type=='input'" type="text" placeholder="未填写" v-model="value[ele.prop]">
+						<input v-if="ele.type=='input'" type="text" :placeholder="ele.value" v-model="value[ele.prop]">
 					</view>
 					<text v-if="ele.rightIcon" class="rightIcon"></text>
 					<text v-if="ele.rightText && ele.prop!='sex'">{{ele.rightText}}</text>

@@ -48,9 +48,6 @@
 					success:async (res) => {
 						if (res.confirm) {
 							const out = await this.$store.dispatch('loginOut')
-							if(out){
-								this.$store.commit('init')
-							}
 						} else if (res.cancel) {
 							console.log('用户点击取消');
 						}

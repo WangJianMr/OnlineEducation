@@ -57,8 +57,9 @@
             "path" : "pages/order-list/order-list",
             "style" :                                                                                    
             {
+				"navigationBarBackgroundColor":"#fff",
                 "navigationBarTitleText": "我的订单",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -66,8 +67,9 @@
             "path" : "pages/msg-list/msg-list",
             "style" :                                                                                    
             {
+				"navigationBarBackgroundColor":"#fff",
                 "navigationBarTitleText": "消息列表",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -124,7 +126,8 @@
             "path" : "pages/user-safe/user-safe",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "账号安全",
+                "navigationBarTitleText": "修改密码",
+				"navigationBarBackgroundColor":"#fff",
                 "enablePullDownRefresh": false
             }
             

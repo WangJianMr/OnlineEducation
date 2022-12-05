@@ -5,7 +5,7 @@
 		<!-- 注册表单 -->
 		<view class="regInput">
 			<h2>{{loginFlag?'登录':'注册'}}</h2>
-			
+
 			<!-- 表单组件 -->
 			<myInput v-model="form" :formList="formList"></myInput>
 
@@ -83,6 +83,7 @@
 			...mapState(['phone'])
 		},
 		methods: {
+			//登录/注册
 			loginGo() {
 				if (this.loginFlag) {
 					if (!this.checkFlag) {
@@ -98,10 +99,9 @@
 						title: ''
 					});
 					this.handelLogin()
-
 				}
 			},
-			//登录账号api
+			// 登录账号api
 			async handelLoginOk() {
 				try {
 					const res = await loginApi.getLogin(this.form)
@@ -114,13 +114,14 @@
 						console.log(this.phone);
 						if (!res.data.data.phone) {
 							this.navTo('/pages/bind-phone/bind-phone')
+							this.$store.commit('init')
 						} else {
 							uni.switchTab({
 								url: '/pages/my/my'
 							});
 							this.$store.commit('init')
 						}
-						
+
 					}
 
 				} catch (e) {
@@ -152,7 +153,7 @@
 			},
 			//注册/登录状态
 			loginFlagChange() {
-				this.form={
+				this.form = {
 					username: "",
 					password: "",
 					repassword: "",
@@ -169,7 +170,7 @@
 				}
 			},
 			//忘记密码
-			forgetPassword(){
+			forgetPassword() {
 				this.navTo('/pages/forget/forget')
 			},
 		}
