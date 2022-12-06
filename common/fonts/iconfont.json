@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "33228145",
+      "name": "nav_icon_数据查询",
+      "font_class": "nav_icon_shujuchaxun",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "1275",
+      "name": "随机用户",
+      "font_class": "suijiyonghu",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "1168074",
       "name": "微信登录",
       "font_class": "weixindenglu",

@@ -2,7 +2,7 @@
 	<view class="couponHome">
 		<mescroll-body ref="mescrollRef" @init="mescrollInit" :down="downOption" @down="downCallback" :up="upOption"
 			@up="upCallback" @emptyclick="emptyClick">
-			<myCouponList></myCouponList>
+			<myCouponList :couponList='couponList'></myCouponList>
 			<view class="ss" v-if="couponList.length<=0">
 				没有更多数据了
 			</view>
@@ -49,6 +49,7 @@
 				console.log(data);
 				this.count = data.data.count
 				this.couponList =this.couponList.concat(data.data.rows) 
+				console.log(this.couponList);
 				
 				this.mescroll.endBySize(this.couponList.length, this.count); 
 				

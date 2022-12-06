@@ -4,8 +4,11 @@
             "path" : "pages/home/home",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "首页",
-                "enablePullDownRefresh": false
+				"navigationBarBackgroundColor":"#fff",
+                "enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView":false
+				}
             }
             
         },
