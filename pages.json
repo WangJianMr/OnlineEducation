@@ -175,6 +175,108 @@
             }
             
         }
+        ,{
+            "path" : "pages/search/search",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#fff",
+				"app-plus": {
+					"titleNView": {
+						"searchInput":{
+							"autoFocus":true,
+							"placeholder": "输入搜索关键字",
+							"backgroundColor":"#f6f9fb",
+							"borderRadius":"20px",
+							"align": "left"
+						},
+						"buttons":[
+							{
+								"text":"搜索",
+								"fontSize":"15",
+								"width":"auto"
+								
+							}
+						]
+					}
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/webview/webview",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/course/course",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/test-list/test-list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "考场列表",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/list/list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "秒杀",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/book-list/book-list",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/bbs/bbs",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/search-result/search-result",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false,
+            	"navigationBarBackgroundColor":"#fff",
+            	"app-plus": {
+            		"titleNView": {
+            			"searchInput":{
+            				"autoFocus":true,
+            				"placeholder": "输入搜索关键字",
+            				"backgroundColor":"#f6f9fb",
+            				"borderRadius":"20px",
+            				"align": "left"
+            			}
+            		}
+            	}
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#c3c2ca",

@@ -23,4 +23,12 @@ export default {
 			data
 		})
 	},
+	//领取优惠劵
+	getCoupon(data){
+		return Http.request({
+			url:"/user_coupon/receive",
+			method:"POST",
+			data
+		})
+	},
 }

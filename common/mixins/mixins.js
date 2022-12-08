@@ -37,6 +37,30 @@ const pageMixins={
 				}
 			},1000)
 		},
+		
+		//本地存储
+		setStrignItem(searchHistoryList,text){
+			uni.getStorage({
+				key: 'searchList',
+				success: (res)=> {
+					const arr = res.data
+					let i = arr.findIndex(item=>item === text)
+					if(i>=0) {
+						let texts =  searchHistoryList[i]
+						searchHistoryList.splice(i,1)
+						searchHistoryList.unshift(texts)
+					}else{
+						searchHistoryList.unshift(text)
+					}
+					uni.setStorageSync('searchList',searchHistoryList)
+				},
+				fail:(err)=>{
+					searchHistoryList.push(text)
+				    uni.setStorageSync('searchList',searchHistoryList)
+				}
+			});
+			return searchHistoryList
+		},
 	}
 	
 }

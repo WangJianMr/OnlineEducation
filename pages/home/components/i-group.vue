@@ -2,7 +2,7 @@
 	<view class="group">
 		<iTitle title="拼团" look=""></iTitle>
 		<scroll-view scroll-x="true" class="scroll">
-			<icommodity :groupList="groupList" width="300rpx"></icommodity>
+			<icommodity :groupList="groupList" width="300rpx" ref="commoditys" @click.native="handelAuth"></icommodity>
 		</scroll-view>
 	</view>
 </template>
@@ -26,6 +26,10 @@
 				default:null
 			}
 		},
+		methods:{
+			async handelAuth(){
+			},
+		}
 		
 	}
 </script>

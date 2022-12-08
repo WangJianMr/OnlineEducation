@@ -1,7 +1,7 @@
 <template>
 	<view class="coupon">
 		<scroll-view scroll-x="true" class="scroll">
-			<chiCoupon class="a" :couponList="couponList" :dfFlag="true"></chiCoupon>
+			<chiCoupon  :couponList="couponList" :dfFlag="true" @getCoupon="getCoupon"></chiCoupon>
 		</scroll-view>
 	</view>
 </template>
@@ -19,6 +19,11 @@
 				default:()=>[]
 			}
 		},
+		methods:{
+			getCoupon(item){
+				this.$emit('getCoupon',item)
+			},
+		}
 	}
 </script>
 

@@ -2,13 +2,13 @@
 	<view class="home">
 		<view class="top">
 			<!-- 搜索框 -->
-			<iSerch :serchList="serchList"></iSerch>
+			<iSerch :serchList="serchList" @click.native="navTo('/pages/search/search')"></iSerch>
 			<!-- 模态框 -->
 			<iSwiper :swiperList="swiperList.data"></iSwiper>
 			<!-- nav选项 -->
 			<iNav :homeNavList="homeNavList.data"></iNav>
 			<!-- 优惠劵 -->
-			<iCoupon :couponList="couponList"></iCoupon>
+			<iCoupon :couponList="couponList" @getCoupon="getCoupon"></iCoupon>
 		</view>
 		<view class="center">
 			<!-- 拼团 -->
@@ -58,9 +58,16 @@
 				count:null,//拼团数量
 				newListMessage:{},//最新列表信息
 				newList:[],//最新列表数据
-				image:'',//尾部展示图片
-				
+				image:'',//尾部展示图片,
 			};
+		},
+		watch:{
+			"$store.state.info":{
+				handler(newVal){
+					this.handelHomeList()
+				},
+				immediate:true,
+			}
 		},
 		onLoad() {
 			this.handelHomeList()
@@ -105,6 +112,32 @@
 					this.count = data.data.count
 				}catch(e){
 					console.log(e);
+					//TODO handle the exception
+				}
+			},
+		    //领取优惠劵
+			getCoupon(item){
+				console.log(item);
+				if(item.isgetcoupon){
+					this.$utils.msg('已经领取过了')
+					return
+				}
+				// coupon_id
+				uni.showLoading({
+					title:'领取中'
+				})
+				this.handelGetCoupon({coupon_id:item.id})
+			},
+			//领取优惠劵接口
+			async handelGetCoupon(coupon_id){
+				try{
+					const res = await homeApi.getCoupon(coupon_id)
+					if(res.statusCode==200){
+						this.$utils.msg('领取成功')
+						this.handelCouponList()
+						uni.hideLoading()
+					}
+				}catch(e){
 					//TODO handle the exception
 				}
 			},

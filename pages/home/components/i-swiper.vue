@@ -2,7 +2,7 @@
 	<view class="swiper">
 		<swiper class="swiperItem" indicator-dots autoplay :interval="3000">
 			<swiper-item v-for="(item,index) in swiperList" :key="index">
-				<image :src="item.src" mode=""></image>
+				<image :src="item.src" mode="" @click="imageAuth(item)"></image>
 			</swiper-item>
 		</swiper>
 	</view>
@@ -17,6 +17,15 @@
 				default:()=>[]
 			}
 		},
+		methods:{
+			imageAuth(item){
+				if(item.url){
+					this.navTo("/pages/webview/webview?url="+item.url)
+				}else{
+					this.navTo("/pages/course/course?id="+item.course_id)
+				}
+			}
+		}
 	}
 </script>
 

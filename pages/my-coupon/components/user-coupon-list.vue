@@ -1,6 +1,6 @@
 <template>
 	<view class="myCoupon" :class="{boxActive:dfFlag}">
-		<view class="rows" :class="{rowsActive:item.isgetcoupon}" v-for="(item,index) in couponList" :key="index">
+		<view class="rows" ref="coupon" :class="{rowsActive:item.isgetcoupon,falseActive:!dfFlag}" v-for="(item,index) in couponList" :key="index" @click="getCoupon(item)">
 			<view class="left" :class="{leftActive:item.isgetcoupon}">
 				<view class="top">
 					￥{{item.price}}
@@ -34,9 +34,17 @@
 		},
 		data() {
 			return {
-
 			}
 		},
+		methods:{
+			getCoupon(item){
+				if(item.isgetcoupon || !item.isgetcoupon){
+					this.$emit('getCoupon',item)
+				}else if(item.used || !item.used){
+					console.log(456);
+				}
+			},
+		}
 	}
 </script>
 
@@ -47,6 +55,7 @@
 		align-items: center !important;
 		height: 130rpx;
 		padding: 0rpx !important;
+
 	}
 	.rowsActive {
 		background-color: #dae0e5 !important;
@@ -56,10 +65,13 @@
 			
 		}
 	}
+	.falseActive{
+		margin-top: 20rpx;
+	}
 
 	.myCoupon {
 		width: 100%;
-		padding:20rpx;
+		padding: 0 20rpx;
 		.rows {
 			width: 100%;
 			display: flex;

@@ -1,6 +1,6 @@
 <template>
 	<view class="commodity" :class="{active:dfFlag}">
-		<view class="commodityItem" :class="{cativeCommodityItem:dfFlag}" v-for="(item,index) in groupList" :key="index">
+		<view class="commodityItem" :class="{cativeCommodityItem:dfFlag}" v-for="(item,index) in groupList" :key="index" @click="commodityAuth(item)">
 			<view class="top" :class="{activeTop:dfFlag}">
 				<image :src="item.cover" mode=""></image>
 				<view class="box">
@@ -47,6 +47,11 @@
 					"column":"专栏"
 				}
 			};
+		},
+		methods:{
+			commodityAuth(item){
+				return item
+			}
 		}
 	}
 </script>

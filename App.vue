@@ -1,7 +1,9 @@
+
 <script>
+	import homeApi from "@/api/home.js"
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
+			
 		},
 		onShow: function() {
 			console.log('App Show')
