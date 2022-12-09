@@ -16,7 +16,10 @@
 			look: {
 				type: String,
 				default: ''
-			}
+			},
+		},
+		created() {
+			console.log(this.fw);
 		},
 		methods:{
 			looks(){
@@ -29,6 +32,7 @@
 </script>
 
 <style lang="scss">
+
 	.title {
 		display: flex;
 		justify-content: space-between;

@@ -136,6 +136,11 @@
 						this.$utils.msg('领取成功')
 						this.handelCouponList()
 						uni.hideLoading()
+					}else{
+						this.$utils.msg('请先登录')
+						setTimeout(()=>{
+							this.navTo('/pages/my/register')
+						},500)
 					}
 				}catch(e){
 					//TODO handle the exception

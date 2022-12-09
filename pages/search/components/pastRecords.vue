@@ -2,7 +2,7 @@
 	<view class="recor">
 		<iTitle title="历史记录" look="清空全部" @empty="empty"></iTitle>
 		<view class="box">
-			<view class="item" v-for="(item,index) in list" :key="index">
+			<view class="item text-ellipsis" v-for="(item,index) in list" :key="index">
 				{{item}}
 			</view>
 		</view>
@@ -41,6 +41,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			.item{
+				max-width: 340rpx;
 				padding:0 17rpx;
 				background-color: #dae0e5;
 				border-radius: 50rpx;

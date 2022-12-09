@@ -48,9 +48,17 @@
 				}
 			};
 		},
+		created() {
+			console.log(this.groupList);
+		},
 		methods:{
 			commodityAuth(item){
-				return item
+				console.log(item);
+				if(item.group_id){
+					this.navTo(`/pages/course/course?id=${item.id}&group_id=${item.group_id}`)
+				}else{
+					this.navTo(`/pages/course/course?id=${item.id}`)
+				}
 			}
 		}
 	}
