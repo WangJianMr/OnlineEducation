@@ -17,7 +17,7 @@
 		</view>
 		<view class="footer">
 			<!-- 最新列表 -->
-			<iNewList :newList="newList"></iNewList>
+			<iNewList  :newList="newList"></iNewList>
 		</view>
 		
 		<view class="image">

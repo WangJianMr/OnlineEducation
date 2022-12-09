@@ -2,7 +2,7 @@
 	<view class="couponHome">
 		<mescroll-body ref="mescrollRef" @init="mescrollInit" :down="downOption" @down="downCallback" :up="upOption"
 			@up="upCallback" @emptyclick="emptyClick">
-			<myCouponList :couponList='couponList'></myCouponList>
+			<myCouponList :couponList='couponList' :goods_id="goods_id"></myCouponList>
 			
 			<view class="ss" v-if="couponList.length<=0">
 				没有更多数据了
@@ -38,7 +38,14 @@
 		
 				count: 0,
 				couponList: [],
+				goods_id:null,
 			};
+		},
+		onLoad(options) {
+			console.log(options);
+			if(options.goods_id && options.type){
+				this.goods_id = options.goods_id
+			}
 		},
 		methods: {
 			/*上拉加载的回调: 其中page.num:当前页 从1开始, page.size:每页数据条数,默认10 */

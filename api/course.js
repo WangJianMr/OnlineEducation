@@ -8,4 +8,20 @@ export default {
 			data,
 		})
 	},
+	getOrder(data){
+		return Http.request({
+			url:'/goods/read',
+			method:"get",
+			data,
+		})
+	},
+	//使用优惠价
+	getUseSpecialRatesr(data){
+		return Http.request({
+			url:'/user_coupon/count',
+			method:"get",
+			data,
+		})
+	},
+	
 }

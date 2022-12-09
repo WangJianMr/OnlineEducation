@@ -1,7 +1,7 @@
 <template>
 	<view class="course">
 		<!-- 商品信息组件 -->
-		<iCourse :corseList="courseList"></iCourse>
+		<iCourse :corseList="courseList" :groupObj="courseList.group"></iCourse>
 		<!-- 商品简介标题组件 -->
 		<view class="brief">
 			<view class="title">
@@ -16,7 +16,8 @@
 		</view>
 		
 		<view class="btns">
-			<button class="btn">立即订购￥{{courseList.price}}</button>
+			<button class="btn"
+			 @click="purchase">{{courseList.group?'立即拼团':'立即抢购'}}￥{{courseList.group?courseList.group.price:courseList.price}}</button>
 		</view>
 	</view>
 </template>
@@ -28,7 +29,7 @@
 	export default {
 		components:{
 			iCourse,
-			iTitle
+			iTitle,
 		},
 		data() {
 			return {
@@ -69,6 +70,7 @@
 					}
 					res.data.data.try = res.data.data.try.replace(/<img/gi, '<img style="max-width:100%;height:auto"')
 					this.courseList=res.data.data
+					console.log(this.courseList.group);
 					this.tabTitle(res.data.data.title)
 				}catch(e){
 					console.log(e);
@@ -83,6 +85,14 @@
 				console.log(e.detail.node.attrs.src);
 				// this.navTo('/pages/web-view/web-view?url='+e.detail.node.attrs.src)
 			},
+			//拼团/抢购
+			purchase(){
+				if(this.courseList.group){
+				}else{
+					console.log(this.courseList);
+					this.navTo(`/pages/create-order/create-order?id=${this.courseList.id}&type=course`)
+				}
+			}
 		}
 	}
 </script>

@@ -6,6 +6,10 @@
 					{{obj[corseList.type]}}
 				</view>
 			</view>
+			<view class="group" v-if="corseList.group">
+				<!-- 拼团组件 -->
+				<iGroup :groupObj="corseList.group" :pic="corseList.price"></iGroup>
+			</view>
 			<view class="footer">
 				<view class="title text-ellipsis">
 				   {{corseList.title}}
@@ -24,13 +28,18 @@
 </template>
 
 <script>
+	import iGroup from "./i-group.vue"
 	export default{
 		name:"iCourse",
+		components:{
+			iGroup
+		},
 		props:{
 			corseList:{
 				type:Object,
 				default:()=>{}
-			}
+			},
+
 		},
 		data() {
 			return {
@@ -68,6 +77,12 @@
 			font-size: 22rpx;
 			padding: 5rpx 10rpx;
 		}
+	}
+	.group{
+		margin-top: 10rpx;
+		height: 140rpx;
+		width: 100%;
+		background-color: #dc3545;
 	}
 	.footer{
 		flex: 1;

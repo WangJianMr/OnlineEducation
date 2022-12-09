@@ -1,6 +1,7 @@
 <template>
 	<view class="myCoupon" :class="{boxActive:dfFlag}">
-		<view class="rows" ref="coupon" :class="{rowsActive:item.isgetcoupon,falseActive:!dfFlag}" v-for="(item,index) in couponList" :key="index" @click="getCoupon(item)">
+		<view class="rows" ref="coupon" :class="{rowsActive:item.isgetcoupon ||(goods_id && goods_id!=item.goods_id),falseActive:!dfFlag}"
+		 v-for="(item,index) in couponList" :key="index" @click="getCoupon(item)">
 			<view class="left" :class="{leftActive:item.isgetcoupon}">
 				<view class="top">
 					￥{{item.price}}
@@ -9,13 +10,18 @@
 					{{item.type=='course'?'适用课程':'适用专栏'}}:{{item.title || item.value.title}}
 				</view>
 			</view>
-			<view class="right" v-if="dfFlag">
+			<view class="right" v-if="goods_id">
+				{{goods_id!=item.goods_id?'不可用':'立即使用'}}
+			</view>
+			<view class="right" v-if="dfFlag && !goods_id">
 				{{item.isgetcoupon?'已领取':'未领取'}}
 			</view>
-			<view class="right" v-if="!dfFlag">
-					{{item.used?'已使用':'立即使用'}}
+			<view class="right" v-else-if="!dfFlag && !goods_id">
+				{{item.used?'已使用':'立即使用'}}
 			</view>
+			
 		</view>
+		
 	</view>
 </template>
 
@@ -30,11 +36,22 @@
 			dfFlag:{
 				type:Boolean,
 				default:false
+			},
+			goods_id:{
+				type:String,
+				default:null
 			}
 		},
 		data() {
 			return {
 			}
+		},
+		created() {
+			console.log(this.goods_id);
+			setTimeout(()=>{
+				console.log(this.couponList);
+			},3000)
+			
 		},
 		methods:{
 			getCoupon(item){
@@ -55,7 +72,6 @@
 		align-items: center !important;
 		height: 130rpx;
 		padding: 0rpx !important;
-
 	}
 	.rowsActive {
 		background-color: #dae0e5 !important;

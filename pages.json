@@ -278,6 +278,16 @@
             }
             
         }
+        ,{
+            "path" : "pages/create-order/create-order",
+            "style" :                                                                                    
+            {
+				"navigationBarBackgroundColor":"#fff",
+                "navigationBarTitleText": "创建订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#c3c2ca",

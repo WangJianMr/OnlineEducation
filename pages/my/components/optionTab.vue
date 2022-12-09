@@ -1,7 +1,7 @@
 <template>
 	<view class="option" :class="{settingFlags:settingFlag}">
 		<view class="optionsListItem" v-for="(item,index) in optionList" :key="index">
-			<view class="ele" :class="{settingBor:settingFlag}" v-for="(ele,i) in item" :key="i"
+			<view class="ele" :class="{settingBor:settingFlag,h:ele.rightRate||ele.rightPay}" v-for="(ele,i) in item" :key="i"
 				@click="optionAuthTo(ele)" :hover-class="ele.event?'active':''">
 				<view class="left">
 					<text v-if="ele.icon" class="icon" :class="ele.icon"></text>
@@ -14,9 +14,12 @@
 					<view class="input">
 						<input v-if="ele.type=='input'" type="text" :placeholder="ele.value" v-model="value[ele.prop]">
 					</view>
+					<text @click.stop="useCoupn(ele)" v-if="ele.rightRate" :class="{fs:ele.rightRate}">{{num>0?`可用优惠劵(${num}张)`:''}}</text>
+					<text v-if="ele.rightPay" :class="{cor:ele.rightPay}">{{ele.rightPay}}</text>
 					<text v-if="ele.rightIcon" class="rightIcon"></text>
 					<text v-if="ele.rightText && ele.prop!='sex'">{{ele.rightText}}</text>
 					<text v-if="ele.prop=='sex'">{{value.sex}}</text>
+					
 				</view>
 			</view>
 		</view>
@@ -39,6 +42,14 @@
 			value:{
 				type:Object,
 				default:()=>{}
+			},
+			num:{
+				type:Number,
+				default:null
+			},
+			id:{
+				type:Number,
+				default:null
 			}
 		},
 		computed:{
@@ -59,8 +70,10 @@
 					this.navTo('/pages/my/register')
 					return
 				}
-				
 			},
+			useCoupn(ele){
+				this.navTo(ele.page+`?goods_id=${this.id}&type=course`)
+			},		
 		}
 	}
 </script>
@@ -68,6 +81,16 @@
 <style lang="scss">
 	.active {
 		background-color: #f1f1f1;
+	}
+	.h{
+		line-height: 80rpx !important;
+	}
+	.fs{
+		font-size: 22rpx;
+		padding-right: 20rpx;
+	}
+	.cor{
+		color: #30ab78;
 	}
 
 	.settingFlags {
@@ -111,6 +134,8 @@
 				}
 
 				.right {
+					display: flex;
+					align-items: center;
 					.rightIcon {
 						&::after {
 							content: "";
