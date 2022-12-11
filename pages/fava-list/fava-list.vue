@@ -43,7 +43,6 @@
 					this.favaList = []
 				}
 				const {data} = await userApi.getUserCollect({page:page.num,limit:page.size})
-				console.log(data);
 				this.count = data.data.count
 				this.favaList =this.favaList.concat(data.data.rows) 
 				

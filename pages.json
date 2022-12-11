@@ -235,8 +235,9 @@
             "path" : "pages/list/list",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "秒杀",
-                "enablePullDownRefresh": false
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#fff"
             }
             
         }
@@ -284,6 +285,15 @@
             {
 				"navigationBarBackgroundColor":"#fff",
                 "navigationBarTitleText": "创建订单",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/column/column",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             

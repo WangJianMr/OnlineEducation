@@ -2,7 +2,7 @@
 	<view class="option" :class="{settingFlags:settingFlag}">
 		<view class="optionsListItem" v-for="(item,index) in optionList" :key="index">
 			<view class="ele" :class="{settingBor:settingFlag,h:ele.rightRate||ele.rightPay}" v-for="(ele,i) in item" :key="i"
-				@click="optionAuthTo(ele)" :hover-class="ele.event?'active':''">
+				@click="optionAuthTo(ele)" hover-class="active">
 				<view class="left">
 					<text v-if="ele.icon" class="icon" :class="ele.icon"></text>
 					<text class="text">{{ele.title}}</text>
@@ -14,7 +14,7 @@
 					<view class="input">
 						<input v-if="ele.type=='input'" type="text" :placeholder="ele.value" v-model="value[ele.prop]">
 					</view>
-					<text @click.stop="useCoupn(ele)" v-if="ele.rightRate" :class="{fs:ele.rightRate}">{{num>0?`可用优惠劵(${num}张)`:''}}</text>
+					<text  v-if="ele.rightRate" :class="{fs:ele.rightRate}">{{num>0?`可用优惠劵(${num}张)`:'暂无可用'}}</text>
 					<text v-if="ele.rightPay" :class="{cor:ele.rightPay}">{{ele.rightPay}}</text>
 					<text v-if="ele.rightIcon" class="rightIcon"></text>
 					<text v-if="ele.rightText && ele.prop!='sex'">{{ele.rightText}}</text>
@@ -59,21 +59,26 @@
 		},
 		methods: {
 			optionAuthTo(ele) {
+				console.log(ele);
 				if(ele.event){
 					this.$emit(ele.event)
 					return
 				}
 				if (ele.login || this.$store.getters.getTokens ) {
+					if(ele.rightRate){
+						if(!this.num){
+							return
+						}
+						this.navTo(ele.page+`?goods_id=${this.id}&type=course`)
+						return
+					}
 					this.navTo(ele.page)
 					return
 				} else {
 					this.navTo('/pages/my/register')
 					return
 				}
-			},
-			useCoupn(ele){
-				this.navTo(ele.page+`?goods_id=${this.id}&type=course`)
-			},		
+			},	
 		}
 	}
 </script>

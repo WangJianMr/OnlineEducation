@@ -1,16 +1,22 @@
 <template>
-	<view class="order">
+	<view class="order" :class="{activeOrder:dfFlag}">
 		<view class="top">
 			<image :src="orderList.cover" mode=""></image>
 			<view class="box">
 				{{obj[orderList.type]}}
 			</view>
 		</view>
-		<view class="footer">
+		<view :class="dfFlag?'activeFooter':'footer'">
 			<view class="title text-ellipsis" :style="`width: ${width}`">
 				{{orderList.title}}
 			</view>
-			<view class="pic">
+			<view class="pic text-ellipsis" v-if="dfFlag">
+				<text class="text">秒杀价:</text>
+				<text class="currentPic">￥{{orderList.price}}</text>
+				<text class="originalPic">￥{{orderList.t_price}}</text>
+			</view>
+			
+			<view class="pic" v-else>
 				<text class="currentPrice">￥{{orderList.price}}</text>
 			</view>
 		</view>
@@ -28,6 +34,10 @@
 			width:{
 				type:String,
 				default:""
+			},
+			dfFlag:{
+				type:Boolean,
+				default:false
 			}
 		},
 		data() {
@@ -44,6 +54,32 @@
 </script>
 
 <style lang="scss">
+	.activeOrder{
+		width: 50%;
+		flex-direction: column;
+		padding: 0 20rpx;
+		margin-bottom: 0 !important;
+	}
+	.activeFooter{
+		display: flex;
+		flex-direction: column;
+		justify-self: flex-start !important; 
+		.pic{
+			white-space: nowrap;
+			.text{
+				color: #dc3545;
+			}
+			.currentPic{
+				color: #dc3545;
+				font-size: 34rpx;
+			}
+			.originalPic{
+				font-size: 24rpx;color: #888;
+			}
+		}
+		
+	}
+	
 	.order{
 		display: flex;
 		padding:20rpx;
@@ -73,7 +109,7 @@
 		flex: 1;
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: space-between;	
 		margin-left: 20rpx;
 		.title{
 			width: 100%;
@@ -89,6 +125,7 @@
 				color: #ccc;
 				font-size: 22rpx;
 			}
+			
 		}
 	}
 </style>

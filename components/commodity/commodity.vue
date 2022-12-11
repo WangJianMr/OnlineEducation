@@ -54,11 +54,20 @@
 		methods:{
 			commodityAuth(item){
 				console.log(item);
-				if(item.group_id){
-					this.navTo(`/pages/course/course?id=${item.id}&group_id=${item.group_id}`)
+				if(item.type=="column" || !item.type){
+					if(item.group_id){
+						this.navTo(`/pages/column/column?id=${item.id}&group_id=${item.group_id}`)
+					}else{
+						this.navTo(`/pages/column/column?id=${item.id}`)
+					}
 				}else{
-					this.navTo(`/pages/course/course?id=${item.id}`)
+					if(item.group_id){
+						this.navTo(`/pages/course/course?id=${item.id}&group_id=${item.group_id}`)
+					}else{
+						this.navTo(`/pages/course/course?id=${item.id}`)
+					}
 				}
+				
 			}
 		}
 	}

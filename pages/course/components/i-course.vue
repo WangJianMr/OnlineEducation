@@ -10,13 +10,17 @@
 				<!-- 拼团组件 -->
 				<iGroup :groupObj="corseList.group" :pic="corseList.price"></iGroup>
 			</view>
-			<view class="footer">
+			<view class="tabbar" v-if="coulom">
+				<tabbar :tabbarList="tabbarList" :tabIndex="tabIndex"  @tabSwitchover="tabSwitchover"></tabbar>
+			</view>
+			
+			<view class="footer" v-if="!coulom || !tabIndex">
 				<view class="title text-ellipsis">
 				   {{corseList.title}}
 				</view>
 				<view class="num">
 					<text>{{corseList.sub_count}} 人学过</text>
-					<text class="iconfont icon-shoucang1 icon" :class="{actives:corseList.isfava}"></text>
+					<text @click.stop="cutCollect" class="iconfont icon-shoucang1 icon" :class="{actives:corseList.isfava}"></text>
 				</view>
 				<view class="pic">
 					<text class="currentPrice" v-if="corseList.price==='0.00'">免费</text>
@@ -29,15 +33,29 @@
 
 <script>
 	import iGroup from "./i-group.vue"
+	import tabbar from "@/pages/tabbar/learn/components/tabbar.vue"
 	export default{
 		name:"iCourse",
 		components:{
-			iGroup
+			iGroup,
+			tabbar
 		},
 		props:{
 			corseList:{
 				type:Object,
 				default:()=>{}
+			},
+			tabbarList:{
+				type:Array,
+				default:()=>['简介','目录']
+			},
+			tabIndex:{
+				type:[Number,String],
+				default:0
+			},
+			coulom:{
+				type:Boolean,
+				default:false
 			},
 
 		},
@@ -52,10 +70,21 @@
 				isfava:false,
 			};
 		},
+		methods:{
+			tabSwitchover(index){
+				this.$emit('tabSwitchover',index)
+			},
+			cutCollect(){
+				this.$emit('cutCollect')
+			},
+		}
 	}
 </script>
 
 <style lang="scss">
+	.tabbar{
+		margin-top: 25rpx;
+	}
 	.icourse{
 		width: 100%;
 		background-color: #fff;
