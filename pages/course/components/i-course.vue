@@ -6,9 +6,9 @@
 					{{obj[corseList.type]}}
 				</view>
 			</view>
-			<view class="group" v-if="corseList.group">
+			<view class="group" v-if="corseList.group || corseList.flashsale">
 				<!-- 拼团组件 -->
-				<iGroup :groupObj="corseList.group" :pic="corseList.price"></iGroup>
+				<iGroup :groupObj="corseList.group || corseList.flashsale" :pic="corseList.price"></iGroup>
 			</view>
 			<view class="tabbar" v-if="coulom">
 				<tabbar :tabbarList="tabbarList" :tabIndex="tabIndex"  @tabSwitchover="tabSwitchover"></tabbar>
@@ -24,8 +24,8 @@
 				</view>
 				<view class="pic">
 					<text class="currentPrice" v-if="corseList.price==='0.00'">免费</text>
-					<text class="currentPrice" v-else>￥2</text>
-					<text class="originalPrice"><s>￥3</s></text>
+					<text class="currentPrice" v-else>￥{{corseList.price}}</text>
+					<text class="originalPrice"><s>￥{{corseList.t_price}}</s></text>
 				</view>
 			</view>
 	</view>

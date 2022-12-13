@@ -2,9 +2,8 @@
 	<view class="favaHome">
 		<mescroll-body ref="mescrollRef" @init="mescrollInit" :down="downOption" @down="downCallback" :up="upOption"
 			@up="upCallback" @emptyclick="emptyClick">
-			<view class="ss" v-if="favaList.length<=0">
-				没有更多数据了
-			</view>
+			<iOrderList v-for="(item,index) in favaList" :key="index" :orderList="item.goods" width="300rpx"
+				:dfFlag="dfFlag" :fava="true"></iOrderList>
 		</mescroll-body>
 	</view>
 </template>
@@ -12,9 +11,11 @@
 <script>
 	import userApi from "@/api/user.js"
 	import MescrollMixin from "@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js";
+	import iOrderList from "@/pages/create-order/components/i-orderList.vue"
 	export default {
 		mixins: [MescrollMixin],
 		components:{
+			iOrderList
 		},
 		data() {
 			return {
@@ -47,7 +48,6 @@
 				this.favaList =this.favaList.concat(data.data.rows) 
 				
 				this.mescroll.endBySize(this.favaList.length, this.count); 
-				
 			},
 		}
 	}

@@ -5,8 +5,11 @@
 				<text class="groupPic">￥{{groupObj.price}}</text>
 				<text class="currentPrice"><s>￥{{pic}}</s></text>
 			</view>
-			<view class="footer">
+			<view class="footer" v-if="groupObj.p_num">
 				<button>{{groupObj.p_num}}人拼团</button>
+			</view>
+			<view class="footers" v-else-if="groupObj.s_num">
+				<button>{{groupObj.used_num}}人已抢/剩{{groupObj.s_num}}名</button>
 			</view>
 		</view>
 		<view class="right">
@@ -88,9 +91,19 @@
 
 			.footer {
 				width: 150rpx;
-
 				button {
 					width: 145rpx;
+					height: 50rpx;
+					display: flex;
+					align-items: center;
+					background-color: #fff;
+					color: #dc3593;
+					font-size: 24rpx;
+					transform: scale(.9);
+				}
+			}
+			.footers {
+				button {
 					height: 50rpx;
 					display: flex;
 					align-items: center;

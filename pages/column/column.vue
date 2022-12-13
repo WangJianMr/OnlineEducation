@@ -111,11 +111,15 @@
 				if(options.group_id){
 					this.page.group_id = options.group_id
 				}
+				if(options.flashsale_id){
+					this.page.flashsale_id = options.flashsale_id
+				}
 			},
 			//获取页面数据
 			async handelCourseData(){
 				try{
 					const res = await coulmnApi.getCourseList(this.page)
+					console.log(res);
 					if(res.statusCode===404){
 						this.$utils.msg(res.data.data)
 						setTimeout(()=>{

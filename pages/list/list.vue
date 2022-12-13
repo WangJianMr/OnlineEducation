@@ -4,7 +4,7 @@
 			@up="upCallback" @emptyclick="emptyClick">
 			<view class="df">
 				<iOrderList v-for="(item,index) in navList" :key="index" :orderList="item" width="300rpx"
-					:dfFlag="true"></iOrderList>
+					:dfFlag="dfFlag"></iOrderList>
 			</view>
 		</mescroll-body>
 	</view>
@@ -39,20 +39,24 @@
 				usable: "1",
 				count: null,
 				navList: [],
+				dfFlag:true
 			};
 		},
 		onLoad(options) {
 			this.type = options.module
+			if(this.type=='column'){
+				this.dfFlag=false
+			}
 		},
 		mounted() {
-			const title = this.type === 'live' ? '直播列表' : this.type === 'group' ? "拼团列表" : '秒杀列表'
+			const title = this.type === 'live' ? '直播列表' : this.type === 'group' ? "拼团列表" :this.type === 'column'?'专栏列表':'秒杀列表'
 			let dot = document.querySelector('.uni-page-head__title')
 			dot.innerHTML = title
 		},
 		methods: {
 			/*上拉加载的回调: 其中page.num:当前页 从1开始, page.size:每页数据条数,默认10 */
 			async upCallback(page) {
-				if (this.type === 'live') {
+				if (this.type === 'live' ||this.type === 'column') {
 					const res = await navApi.getCourseList({
 						limit: page.size,
 						page: page.num

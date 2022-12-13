@@ -1,9 +1,10 @@
 <template>
 	<view class="course">
 		<!-- 商品信息组件 -->
-		<iCourse :corseList="courseList" :groupObj="courseList.group"></iCourse>
+		<iCourse :corseList="courseList" :groupObj="courseList.group" @cutCollect="cutCollect"></iCourse>
+
 		<!-- 商品简介标题组件 -->
-		<view class="brief">
+		<view class="brief" >
 			<view class="title">
 				课程简介
 			</view>
@@ -48,6 +49,40 @@
 			
 		},
 		methods:{
+			//收藏api
+			async handelCollect(){
+				try{
+					const res = await courseApi.getCollect({goods_id:this.page.id,type:"course"})
+					if(res.statusCode===200){
+						this.$utils.msg('收藏成功')
+						this.courseList.isfava = true
+					}
+					console.log(res);
+				}catch(e){
+					//TODO handle the exception
+				}
+			},
+			//取消收藏api
+			async handelCancelCollect(){
+				try{
+					const res = await courseApi.getCancelCollect({goods_id:this.page.id,type:"course"})
+					if(res.statusCode===200){
+						this.$utils.msg('取消收藏成功')
+						this.courseList.isfava = false
+					}
+					console.log(res);
+				}catch(e){
+					//TODO handle the exception
+				}
+			},
+			// 收藏切换
+			cutCollect(){
+				if(!this.courseList.isfava){
+					this.handelCollect()
+				}else{
+					this.handelCancelCollect()
+				}
+			},
 			//获取id
 			getId(options){
 				if(options.id){
@@ -56,11 +91,15 @@
 				if(options.group_id){
 					this.page.group_id = options.group_id
 				}
+				if(options.flashsale_id){
+					this.page.flashsale_id = options.flashsale_id
+				}
 			},
 			//获取页面数据
 			async handelCourseData(){
 				try{
 					const res = await courseApi.getCourseList(this.page)
+					console.log(res);
 					if(res.statusCode===404){
 						this.$utils.msg(res.data.data)
 						setTimeout(()=>{
@@ -70,7 +109,7 @@
 					}
 					res.data.data.try = res.data.data.try.replace(/<img/gi, '<img style="max-width:100%;height:auto"')
 					this.courseList=res.data.data
-					console.log(this.courseList.group);
+					console.log(this.courseList);
 					this.tabTitle(res.data.data.title)
 				}catch(e){
 					console.log(e);
