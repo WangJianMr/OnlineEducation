@@ -88,7 +88,6 @@
 					console.log(this.arr[index] instanceof Array);
 					if( this.arr[this.num] instanceof Array===false){
 						this.arr[this.num]=[]
-						console.log(this.arr[this.num]);
 					}
 					if( this.arrs[this.num] instanceof Array===false){
 						this.arrs[this.num]=[]
@@ -101,7 +100,6 @@
 						this.arr[this.num].splice(i,1)
 						this.arrs[this.num].splice(i,1)
 					}
-					console.log(this.arrs);
 					this.$emit('checkboxArr',this.arrs[this.num],this.num)
 				}
 			},

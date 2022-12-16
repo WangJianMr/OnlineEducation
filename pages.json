@@ -255,8 +255,28 @@
             "path" : "pages/bbs/bbs",
             "style" :                                                                                    
             {
+				"navigationBarBackgroundColor":"#fff",
                 "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true,
+				"app-plus": {
+					"titleNView": {
+						"searchInput":{
+							"autoFocus":true,
+							"placeholder": "输入搜索关键字",
+							"backgroundColor":"#f5f5f4",
+							"borderRadius":"5px",
+							"align": "center"
+						},
+						"buttons":[
+							{
+								"float": "right",
+								"fontSrc": "/static/iconfont.ttf",
+								"text": "\ue682",
+								"fontSize": "17"
+							}
+						]
+					}
+				}
             }
             
         }
@@ -306,6 +326,36 @@
                 "navigationBarTitleText": "开始考试",
 				"navigationBarBackgroundColor":"#fff",
                 "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/add-post/add-post",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "新增帖子",
+				"navigationBarBackgroundColor":"#fff",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"titleNView": {
+						"buttons":[
+							{
+								"text": "发布",
+								"fontSize": "15"
+							}
+						]
+					}
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/post-detail/post-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "帖子详情",
+                "enablePullDownRefresh": false,
+				"navigationBarBackgroundColor":"#fff"
             }
             
         }

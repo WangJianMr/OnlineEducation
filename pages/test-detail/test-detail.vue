@@ -45,7 +45,6 @@
 			async HandInAnExamination(obj){
 				try{
 					const res = await examApi.getHandInAnExamination(obj)
-					console.log(res);
 					if(res.statusCode!==200){
 						this.$utils.msg(res.data.data.slice(0,4)+'没有答题')
 					}else{
@@ -76,10 +75,6 @@
 						}
 					}
 				});
-				
-				
-				
-				
 			},
 			//减num
 			subNum(val){
