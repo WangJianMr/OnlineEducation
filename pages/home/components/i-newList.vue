@@ -1,7 +1,7 @@
 <template>
 	<view class="newList">
 		<iTitle title="最新列表" look="查看更多" v-if="!show"></iTitle>
-		<icommodity :groupList="newList" width="360rpx" :dfFlag="true" ref="sss"></icommodity>
+		<icommodity :groupList="newList" width="360rpx" :dfFlag="true" ref="sss" :progress="progress"></icommodity>
 	</view>
 </template>
 
@@ -20,6 +20,10 @@
 				default:()=>[]
 			},
 			show:{
+				type:Boolean,
+				default:false
+			},
+			progress:{
 				type:Boolean,
 				default:false
 			}

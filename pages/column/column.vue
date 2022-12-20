@@ -16,7 +16,7 @@
 		<!-- 商品简介标题组件 -->
 		<view class="brief" v-else>
 			<view class="title">
-				课程简介
+				专栏简介
 			</view>
 			<scroll-view scroll-x="true" >
 				<view class="html">
@@ -27,7 +27,7 @@
 		
 		
 		
-		<view class="btns">
+		<view class="btns" v-if="!courseList.isbuy">
 			<button class="btn"
 			 @click="purchase">{{courseList.group?'立即拼团':'立即抢购'}}￥{{courseList.group?courseList.group.price:courseList.price}}</button>
 		</view>

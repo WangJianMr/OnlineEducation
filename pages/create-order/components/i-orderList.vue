@@ -1,6 +1,6 @@
 <template>
 	<view class="order" :class="{activeOrder:dfFlag}" @click="commodityAuth(orderList)">
-		<view class="top">
+		<view class="top mr-2">
 			<image :src="orderList.cover" mode=""></image>
 			<view class="box">
 				{{obj[orderList.type]}}
@@ -14,14 +14,19 @@
 				</view>
 			</view>
 			
-			<view class="" v-if="!fava">
+			<view class="pic"  v-if="progress">
+				<text class="currentPrice" style="font-size: 20rpx;">最近学习</text>
+				<text class="originalPrice">已学习 {{orderList.progress}}%</text>
+			</view>
+			
+			<view class="" v-if="!fava || !progress">
 				<view class="pic text-ellipsis" v-if="dfFlag">
 					<text class="text">秒杀价:</text>
 					<text class="currentPic">￥{{orderList.price}}</text>
 					<text class="originalPic">￥{{orderList.t_price}}</text>
 				</view>
 				
-				<view class="pic" v-else>
+				<view class="pic" v-if="fava || !progress">
 					<text class="currentPrice">￥{{orderList.price}}</text>
 				</view>
 			</view>
@@ -49,6 +54,10 @@
 				type:Boolean,
 				default:false
 			},
+			progress:{
+				type:Boolean,
+				default:false
+			}
 		},
 		data() {
 			return {
@@ -132,6 +141,7 @@
 		width: 340rpx;
 		height: 190rpx;
 		position: relative;
+		
 		image{
 			width: 100%;
 			height: 100%;

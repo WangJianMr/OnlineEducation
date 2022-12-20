@@ -6,12 +6,22 @@
 				<view class="box">
 					{{obj[item.type]}}
 				</view>
+				
 			</view>
+			
 			<view class="footer">
 				<view class="title text-ellipsis" :style="`width: ${width}`">
 					{{item.title}}
 				</view>
-				<view class="pic">
+				<view v-if="progress" class="con" style="font-size: 20rpx;color: #ccc;margin-top: -30rpx;">
+				   学习进度
+				</view>
+				
+				<view class="pic"  v-if="progress">
+					<text class="currentPrice" style="font-size: 20rpx;">最近学习</text>
+					<text class="originalPrice">已学习 {{item.progress}}%</text>
+				</view>
+				<view class="pic" v-else>
 					<text class="currentPrice" v-if="item.price==='0.00'">免费</text>
 					<text class="currentPrice " v-else>￥{{item.price}}</text>
 					<text class="originalPrice">￥{{item.t_price}}</text>
@@ -34,6 +44,10 @@
 				default:''
 			},
 			dfFlag:{
+				type:Boolean,
+				default:false
+			},
+			progress:{
 				type:Boolean,
 				default:false
 			}

@@ -40,5 +40,29 @@ export default {
 			data,
 		})
 	},
+	//帖子详情
+	getBbsDetails(data){
+		return Http.request({
+			url:'/post/read',
+			method:"get",
+			data,
+		})
+	},
+	//帖子评论详情
+	getBbsCritic(data){
+		return Http.request({
+			url:'/post_comment',
+			method:"get",
+			data,
+		})
+	},
+	//发表评论
+	getBbsComment(data){
+		return Http.request({
+			url:'/post/reply',
+			method:"post",
+			data,
+		})
+	},
 	
 }

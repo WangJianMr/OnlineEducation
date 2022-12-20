@@ -5,7 +5,7 @@
 		<view class="selectCommunity">
 			<picker :value="community" :range="bbsTopList" range-key="title" @change="selectComm">
 				<view class="community">
-					{{title || bbsTopList[index]}}
+					{{title || bbsTopList}}
 				</view>
 			</picker>
 

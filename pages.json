@@ -152,8 +152,9 @@
             "path" : "pages/my-post/my-post",
             "style" :                                                                                    
             {
+				"navigationBarBackgroundColor":"#fff",
                 "navigationBarTitleText": "我的帖子",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }
@@ -161,8 +162,9 @@
             "path" : "pages/my-test/my-test",
             "style" :                                                                                    
             {
+				"navigationBarBackgroundColor":"#fff",
                 "navigationBarTitleText": "我的考试记录",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": true
             }
             
         }

@@ -3,15 +3,6 @@
 		<view class="tab">
 			<iTabBar :tabbarList="tabbarList" :tabIndex="page.type" @tabSwitchover="tabSwitchover"></iTabBar>
 		</view>
-
-			<!-- <swiper class="swiper" :current="page.type" @change="currentChange">
-				<swiper-item class="swipera">
-					<iCourse :page="page" :istt='0'></iCourse>
-				</swiper-item>
-				<swiper-item>
-					<iColumm :page="page" :istt='1'></iColumm>
-				</swiper-item>
-			</swiper> -->
 			
 			<swiper :style="{height: height}" :current="page.type" @change="currentChange">
 				<swiper-item v-for="(tab,i) in tabbarList" :key="i">

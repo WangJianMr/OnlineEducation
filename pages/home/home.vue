@@ -1,27 +1,33 @@
 <template>
 	<view class="home">
-		<view class="top">
-			<!-- 搜索框 -->
-			<iSerch :serchList="serchList" @click.native="navTo('/pages/search/search')"></iSerch>
-			<!-- 模态框 -->
-			<iSwiper :swiperList="swiperList.data"></iSwiper>
-			<!-- nav选项 -->
-			<iNav :homeNavList="homeNavList.data"></iNav>
-			<!-- 优惠劵 -->
-			<iCoupon :couponList="couponList" @getCoupon="getCoupon"></iCoupon>
-		</view>
-		<view class="center">
-			<!-- 拼团 -->
-			<iGroup :groupList="groupList" :count="count"></iGroup>
-			
-		</view>
-		<view class="footer">
-			<!-- 最新列表 -->
-			<iNewList  :newList="newList"></iNewList>
+		<view class="c" v-if="!modelKFlag">
+			<iModelK></iModelK>
 		</view>
 		
-		<view class="image">
-			<image :src="image" mode=""></image>
+		<view class="" v-else>
+			<view class="top">
+				<!-- 搜索框 -->
+				<iSerch :serchList="serchList" @click.native="navTo('/pages/search/search')"></iSerch>
+				<!-- 模态框 -->
+				<iSwiper :swiperList="swiperList.data"></iSwiper>
+				<!-- nav选项 -->
+				<iNav :homeNavList="homeNavList.data"></iNav>
+				<!-- 优惠劵 -->
+				<iCoupon :couponList="couponList" @getCoupon="getCoupon"></iCoupon>
+			</view>
+			<view class="center">
+				<!-- 拼团 -->
+				<iGroup :groupList="groupList" :count="count"></iGroup>
+				
+			</view>
+			<view class="footer">
+				<!-- 最新列表 -->
+				<iNewList  :newList="newList"></iNewList>
+			</view>
+			
+			<view class="image">
+				<image :src="image" mode=""></image>
+			</view>
 		</view>
 	</view>
 </template>
@@ -33,7 +39,7 @@
 	import iCoupon from "./components/i-coupon.vue"
 	import iGroup from "./components/i-group.vue"
 	import iNewList from "./components/i-newList.vue"
- 	
+ 	import iModelK from "./components/modelK.vue"
 	import homeApi from "@/api/home.js"
 	export default {
 		components: {
@@ -42,8 +48,8 @@
 			iNav,
 			iCoupon,
 			iGroup,
-			iNewList
-			
+			iNewList,
+			iModelK
 		},
 		data() {
 			return {
@@ -59,6 +65,7 @@
 				newListMessage:{},//最新列表信息
 				newList:[],//最新列表数据
 				image:'',//尾部展示图片,
+				modelKFlag:false,
 			};
 		},
 		watch:{
@@ -70,6 +77,7 @@
 			}
 		},
 		onLoad() {
+			this.modelKFlag = false
 			this.handelHomeList()
 		},
 		onPullDownRefresh(e){
@@ -91,7 +99,9 @@
 					this.handelCouponList()
 					this.handelGroupList()
 					uni.stopPullDownRefresh()
+					this.modelKFlag = true
 				}catch(e){
+					this.modelKFlag = true
 					//TODO handle the exception
 				}
 			},
@@ -151,6 +161,11 @@
 </script>
 
 <style lang="scss">
+	.c{
+		width: 100%;
+		height: 100%;
+		background-color: #fff;
+	}
 	page,.home {
 		background-color: #f5f5f3;
 		.top{

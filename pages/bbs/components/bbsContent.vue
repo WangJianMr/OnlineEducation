@@ -36,11 +36,14 @@
 			<view class="footer" v-if="!footerFlag">
 				<view class="left">
 					<text class="iconfont icon-pinglun2 icon"></text>
-					<text>{{item.comment_count}}</text>
+					<text>{{post?'评论':item.comment_count}}</text>
 					<text class="iconfont icon-dianzan2 icon" :class="{corActive:item.issupport}" @click.stop="give(item)"></text>
-					<text @click.stop="give(item)" :class="{corActive:item.issupport}">{{item.support_count}}</text>
+					<text @click.stop="give(item)" :class="{corActive:item.issupport}">{{item.support_count>=1?item.support_count:post?'点赞':item.support_count}}</text>
 				</view>
 				<view class="right">
+					<view class="del" v-if="post" @click="delBbs(item)">
+						删除
+					</view>
 					{{item.created_time}}
 				</view>
 			</view>
@@ -59,9 +62,16 @@
 			footerFlag:{
 				type:Boolean,
 				default:false
+			},
+			post:{
+				type:Boolean,
+				default:false
 			}
 		},
 		methods: {
+			delBbs(item){
+				this.$emit('delBbs',item)
+			},
 			give(item){
 				console.log(item);
 				this.$emit('give',item)
@@ -70,6 +80,7 @@
 				console.log(item.id);
 				this.navTo('/pages/post-detail/post-detail?id='+item.id)
 			},
+		
 		},
 	}
 </script>
@@ -173,6 +184,17 @@
 				.right{
 					color: #888;
 					font-size: 26rpx;
+					display: flex;
+					align-items: center;
+					.del{
+						background-color: #e64340;
+						color: #fff;
+						line-height: 60rpx;
+						width: 120rpx;
+						text-align: center;
+						border-radius: 15rpx;
+						margin-right: 15rpx;
+					}
 				}
 			}
 

@@ -1,12 +1,12 @@
 <template>
 	<view class="course">
 		<!-- 商品信息组件 -->
-		<iCourse :corseList="courseList" :groupObj="courseList.group" @cutCollect="cutCollect"></iCourse>
+		<iCourse :corseList="courseList" :groupObj="courseList.group" @cutCollect="cutCollect" src="http://music.163.com/song/media/outer/url?id=31877549.mp3"></iCourse>
 
 		<!-- 商品简介标题组件 -->
 		<view class="brief" >
 			<view class="title">
-				课程简介
+				{{courseList.isbuy?'课程内容':'课程简介'}}
 			</view>
 			<scroll-view scroll-x="true" >
 				<view class="html">
@@ -16,7 +16,7 @@
 			
 		</view>
 		
-		<view class="btns">
+		<view class="btns" v-if="!courseList.isbuy">
 			<button class="btn"
 			 @click="purchase">{{courseList.group?'立即拼团':'立即抢购'}}￥{{courseList.group?courseList.group.price:courseList.price}}</button>
 		</view>
@@ -109,7 +109,6 @@
 					}
 					res.data.data.try = res.data.data.try.replace(/<img/gi, '<img style="max-width:100%;height:auto"')
 					this.courseList=res.data.data
-					console.log(this.courseList);
 					this.tabTitle(res.data.data.title)
 				}catch(e){
 					console.log(e);

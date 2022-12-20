@@ -1,20 +1,24 @@
 <template>
-	<view>
+	<view class="learn">
 		<notLogin v-if="!getTokens"></notLogin>
-		<view class="" v-else>
-			<!-- //nav -->
-			<navBar :navList="navList"></navBar>
-			<!-- //tab -->
-			<tabbar class="tabbar" :tabbarList="tabbarList" :tabIndex="tabIndex" @tabSwitchover="tabSwitchover"></tabbar>
-
-				<swiper :current="tabIndex" @change="currentChange">
-					<swiper-item>
-						1
-					</swiper-item>
-					<swiper-item>
-						2
+		<view class="cc" v-else>
+			<view class="top">
+				<!-- //nav -->
+				<navBar :navList="navList"></navBar>
+				<!-- //tab -->
+				<tabbar class="tabbar" :tabbarList="tabbarList" :tabIndex="page.type" @tabSwitchover="tabSwitchover">
+				</tabbar>
+			</view>
+			
+			<view class="bot">
+				<swiper class="swiper" :current="page.type" @change="currentChange">
+					<swiper-item v-for="(tab,i) in tabbarList" :key="i">
+						<MescrollItem ref="mescrollItem" :i="i" :index="page.type" :height="height" :page="page">
+						</MescrollItem>
 					</swiper-item>
 				</swiper>
+			</view>
+
 
 		</view>
 	</view>
@@ -27,16 +31,22 @@
 	import notLogin from "./components/notLogin"
 	import navBar from "@/pages/my/components/navBar.vue"
 	import tabbar from "./components/tabbar.vue"
+	import MescrollItem from "./components/mescroll-swiper-item.vue"
 	export default {
 		components: {
 			notLogin,
 			navBar,
-			tabbar
+			tabbar,
+			MescrollItem
 		},
 		data() {
 			return {
-				tabIndex:0,
-				tabbarList:['课程','专栏'],
+				page: {
+					page: 1,
+					type: 0,
+				},
+				height: "100%",
+				tabbarList: ['课程', '专栏'],
 				navList: [{
 						icon: 'iconfont icon-OrderHistory',
 						title: '帖子',
@@ -62,13 +72,13 @@
 		computed: {
 			...mapGetters(['getTokens'])
 		},
-		methods:{
-			tabSwitchover(val){
-				this.tabIndex = val
+		methods: {
+			tabSwitchover(val) {
+				this.page.type = val
 			},
-			currentChange(e){
+			currentChange(e) {
 				console.log(e);
-				this.tabIndex = e.detail.current
+				this.page.type = e.detail.current
 			}
 		}
 
@@ -76,7 +86,30 @@
 </script>
 
 <style lang="scss">
-.tabbar{
-	margin-top: 50rpx;
-}
+	page,
+	.learn {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	.cc {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		.top{
+			flex: 2;
+		}
+		.bot{
+			flex: 6;
+			.swiper{
+				height: 100%;
+			}
+		}
+	}
+
+	.tabbar {
+		margin-top: 50rpx;
+	}
+	
 </style>
+
